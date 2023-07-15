@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DICE ROLLER GAME
 
-## Getting Started
+Welcome to the Dice Roller Game! This is a web application built using Next.js, Tailwind CSS, GSAP for animation, and TypeScript with JavaScript. The game utilizes React Context API and the Reducer Hook for state management.
 
-First, run the development server:
+## Installation
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Ensure that you have `Node.js` and `git` installed on your machine.
+2. Clone this repository: git clone https://github.com/dev-sujan/dice-roller-game.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```console
+   git clone https://github.com/dev-sujan/dice-roller-game.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Navigate to the project directory: ` cd dice-roller-game`
+4. Install the dependencies:
+   ```bash
+    npm install
+    #or
+    yarn
+    #or
+    pnpm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Local Development
 
-## Learn More
+1. Start the development server:
+   ```bash
+   npm run dev
+   #or
+   yarn dev
+   #or
+   pnpm dev
+   ```
+2. Open your web browser and go to http://localhost:3000 to access the Dice Roller Game
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The Dice Roller Game is deployed on Vercel and can be accessed at the following link: [Live Demo](https://dice-roller-seven.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+- Next.js - A React framework for server-side rendering and static site generation.
+- Tailwind CSS - A utility-first CSS framework for rapidly building custom designs.
+- GSAP - GreenSock Animation Platform for smooth and performant animations.
+- TypeScript - A strongly typed superset of JavaScript.
+- React - A JavaScript library for building user interfaces.
+- React Context API - A state management solution for React applications.
+- Reducer Hook - A React Hook for managing complex state logic.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request to the GitHub repository.
+
+## License
+
+This project is licensed under the `MIT License`.
