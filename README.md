@@ -1,4 +1,4 @@
-# DICE ROLLER GAME
+# 🎲 DICE ROLLER GAME 🎲
 
 Welcome to the Dice Roller Game! This is a web application built using Next.js, Tailwind CSS, GSAP for animation, and TypeScript with JavaScript. The game utilizes React Context API and the Reducer Hook for state management.
 
