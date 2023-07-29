@@ -38,17 +38,18 @@ const DiceRoller = () => {
     const ctx = gsap.context(() => {
       const timeline = gsap.timeline();
 
-      timeline.from("#diceImage", {
-        opacity: 0,
-        scale: 0,
-        duration: 1,
-        y: 200,
-        delay: 1,
-      }).from("#hintText", {
-        opacity: 0,
-        y: 100,
-
-      });
+      timeline
+        .from("#diceImage", {
+          opacity: 0,
+          scale: 0,
+          duration: 1,
+          y: 200,
+          delay: 1,
+        })
+        .from("#hintText", {
+          opacity: 0,
+          y: 100,
+        });
     });
 
     return () => ctx.revert();
@@ -59,6 +60,7 @@ const DiceRoller = () => {
       <div className={spin ? "animate-bounce " : "" + "cursor-pointer"}>
         <div className={spin ? "animate-spin " : "" + "cursor-pointer"}>
           <Image
+            priority
             id="diceImage"
             className={spin ? "animate-spin " : "" + "cursor-pointer"}
             src={`/images/dices/dice_${rolledNumber}.png`}
@@ -71,7 +73,9 @@ const DiceRoller = () => {
           />
         </div>
       </div>
-      <p id="hintText" className="text-center text-2xl">Click on Dice to roll</p>
+      <p id="hintText" className="text-center text-2xl">
+        Click on Dice to roll
+      </p>
     </div>
   );
 };

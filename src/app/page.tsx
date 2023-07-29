@@ -39,6 +39,7 @@ const Home = () => {
           width={649}
           height={522}
           alt="dice-image"
+          priority
         ></Image>
       </aside>
       <div className="flex flex-col items-center sm:items-end text-center ">
