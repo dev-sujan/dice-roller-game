@@ -50,7 +50,10 @@ const GameContextProvider = ({ children }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, initialState, () => {
-    const stored = localStorage.getItem("game");
+    let stored;
+    if (typeof window !== "undefined") {
+      stored = localStorage.getItem("game");
+    }
     return stored ? JSON.parse(stored) : initialState;
   });
 
