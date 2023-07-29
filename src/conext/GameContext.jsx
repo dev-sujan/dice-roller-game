@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useState, useEffect, useReducer } from "react";
 
 const ACTION = {
   INIT_STORED: "INIT_STORED",
@@ -47,7 +47,24 @@ function reducer(state, action) {
 }
 
 const GameContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [isMounted, setIsMounted] = useState(false);
+
+  const [state, dispatch] = useReducer(reducer, initialState, () => {
+    const stored = localStorage.getItem("game");
+    return stored ? JSON.parse(stored) : initialState;
+  });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("game", JSON.stringify(state));
+  }, [state]);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const resetScore = () => dispatch({ type: ACTION.REST_SCORE });
 

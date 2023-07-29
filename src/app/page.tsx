@@ -7,18 +7,22 @@ import React, { useLayoutEffect } from "react";
 const Home = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.timeline().from("#img",{
-        opacity:0,
-        scale: 20,
-        duration: 1,
-      }).from("#text", {
-        y: -500,
-        opacity: 0,
-        duration: 1
-      }).from("#playGameBtn", {
-        opacity: 1,
-        duration: 3
-      });
+      gsap
+        .timeline()
+        .from("#img", {
+          opacity: 0,
+          scale: 20,
+          duration: 1,
+        })
+        .from("#text", {
+          y: -500,
+          opacity: 0,
+          duration: 1,
+        })
+        .from("#playGameBtn", {
+          opacity: 1,
+          duration: 3,
+        });
     });
 
     return () => {
@@ -30,7 +34,7 @@ const Home = () => {
     <main className=" p-5 min-h-screen flex flex-col justify-center items-center sm:flex-row">
       <aside className="flex-shrink">
         <Image
-        id="img"
+          id="img"
           src={"/images/dices.png"}
           width={649}
           height={522}
@@ -45,7 +49,7 @@ const Home = () => {
           Dice Game
         </h1>
         <>
-          <PlayGameButton id={'playGameBtn'} />
+          <PlayGameButton id={"playGameBtn"} />
         </>
       </div>
     </main>
