@@ -1,12 +1,12 @@
 import getRandomNumberInRange from "@/helpers/getRandomNumberInRange";
 import useGameContext from "@/hooks/useGameContext";
-import React, { useLayoutEffect, useState } from "react";
-import Image from "next/image";
 import gsap from "gsap";
+import Image from "next/image";
+import { useEffect, useLayoutEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const DiceRoller = () => {
-  const { selectedNumber, setScore, setError, state, error }: any =
-    useGameContext();
+  const { selectedNumber, setScore, setError, error }: any = useGameContext();
 
   const [rolledNumber, setRolledNumber]: any = useState(1);
 
@@ -55,6 +55,20 @@ const DiceRoller = () => {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const handleKeydown = (e: any) => {
+      if (e.key === " ") {
+        error ? toast.error("Select a number") : !spin && rollDice();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeydown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  });
+
   return (
     <div>
       <div className={spin ? "animate-bounce " : "" + "cursor-pointer"}>
@@ -68,7 +82,7 @@ const DiceRoller = () => {
             width={250}
             height={250}
             onClick={() => {
-              !error && !spin && rollDice();
+              error ? toast.error("Select a number") : !spin && rollDice();
             }}
           />
         </div>

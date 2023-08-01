@@ -2,7 +2,7 @@
 import PlayGameButton from "@/components/PlayGameButton";
 import gsap from "gsap";
 import Image from "next/image";
-import React, { useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 
 const Home = () => {
   useLayoutEffect(() => {

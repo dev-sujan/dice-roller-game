@@ -6,7 +6,7 @@ import Score from "@/components/Score";
 import SelectionBoxes from "@/components/selction-box";
 import useGameContext from "@/hooks/useGameContext";
 import gsap from "gsap";
-import React, { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const PlayGame = () => {
   const [showRules, setShowRules] = useState(false);

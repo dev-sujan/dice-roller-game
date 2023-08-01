@@ -1,8 +1,9 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Roboto } from "next/font/google";
 import GameContextProvider from "@/conext/GameContext";
+import ToastProvider from "@/providers/ToastProvider";
+import type { Metadata } from "next";
+import { Inter, Roboto } from "next/font/google";
+import "react-toastify/dist/ReactToastify.min.css";
+import "./globals.css";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -24,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <GameContextProvider>{children}</GameContextProvider>
+        <GameContextProvider>
+          <ToastProvider />
+          {children}
+        </GameContextProvider>
       </body>
     </html>
   );
