@@ -71,8 +71,11 @@ const SelectionBoxes = () => {
   });
 
   return (
-    <div className="inline-flex flex-col gap-2 items-end">
-      <div ref={boxRef} className="flex gap-5">
+    <div className="mt-4 inline-flex flex-col gap-2 items-center sm:items-end">
+      <div
+        ref={boxRef}
+        className="grid grid-cols-3 gap-x-5 gap-y-2 sm:flex sm:gap-5"
+      >
         {numbers.map((num) => (
           <Box
             id="box"

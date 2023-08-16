@@ -1,5 +1,6 @@
 import getRandomNumberInRange from "@/helpers/getRandomNumberInRange";
 import useGameContext from "@/hooks/useGameContext";
+import { cn } from "@/libs/utils";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -70,13 +71,18 @@ const DiceRoller = () => {
   });
 
   return (
-    <div>
-      <div className={spin ? "animate-bounce " : "" + "cursor-pointer"}>
-        <div className={spin ? "animate-spin " : "" + "cursor-pointer"}>
+    <>
+      <div
+        className={cn(
+          "cursor-pointer h-56 w-56 sm:h-full sm:w-full",
+          spin && "animate-bounce "
+        )}
+      >
+        <div className={cn("cursor-pointer  ", spin && "animate-spin ")}>
           <Image
             priority
             id="diceImage"
-            className={spin ? "animate-spin " : "" + "cursor-pointer"}
+            className={cn("cursor-pointer", spin && "animate-spin ")}
             src={`/images/dices/dice_${rolledNumber}.png`}
             alt="dice-image"
             width={250}
@@ -90,7 +96,7 @@ const DiceRoller = () => {
       <p id="hintText" className="text-center text-2xl">
         Click on Dice to roll
       </p>
-    </div>
+    </>
   );
 };
 

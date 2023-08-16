@@ -28,10 +28,10 @@ const Score = () => {
 
   return (
     <div className="inline-flex flex-col items-center">
-      <div id={"score"} className="text-8xl">
+      <div id={"score"} className=" text-5xl sm:text-8xl">
         {score}
       </div>
-      <h3 id={"total"} className="text-2xl">
+      <h3 id={"total"} className="text-xl sm:text-2xl">
         Total Score
       </h3>
     </div>

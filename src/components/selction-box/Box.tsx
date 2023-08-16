@@ -1,3 +1,4 @@
+import { cn } from "@/libs/utils";
 import React, { FC } from "react";
 
 interface BoxProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
@@ -6,13 +7,14 @@ interface BoxProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
 }
 
 const Box: FC<BoxProps> = ({ value, selected, ...rest }) => {
-  let boxClasses =
-    " w-16 h-16 py-4 border border-black flex items-center justify-center cursor-pointer font-bold text-2xl transition duration-300";
-
-  selected ? (boxClasses += " bg-black text-white ") : (boxClasses += " ");
-
   return (
-    <div {...rest} className={boxClasses + ""}>
+    <div
+      {...rest}
+      className={cn(
+        "w-10 h-10 py-4 sm:w-16 sm:h-16 sm:py-4 border border-black flex items-center justify-center cursor-pointer font-bold text-2xl transition duration-300",
+        selected && " bg-black text-white "
+      )}
+    >
       {value}
     </div>
   );
