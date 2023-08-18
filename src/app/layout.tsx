@@ -1,4 +1,3 @@
-import GameContextProvider from "@/conext/GameContext";
 import ToastProvider from "@/providers/ToastProvider";
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
@@ -25,10 +24,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.className}>
-        <GameContextProvider>
-          <ToastProvider />
-          {children}
-        </GameContextProvider>
+        <ToastProvider />
+        {children}
       </body>
     </html>
   );

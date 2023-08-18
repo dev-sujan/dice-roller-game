@@ -1,5 +1,6 @@
+"use client";
 import { cn } from "@/libs/utils";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 interface BoxProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   value: number;
@@ -7,6 +8,16 @@ interface BoxProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
 }
 
 const Box: FC<BoxProps> = ({ value, selected, ...rest }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div
       {...rest}

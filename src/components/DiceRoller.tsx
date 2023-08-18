@@ -1,13 +1,12 @@
 import getRandomNumberInRange from "@/helpers/getRandomNumberInRange";
-import useGameContext from "@/hooks/useGameContext";
+import { useGame } from "@/hooks/useGame";
 import { cn } from "@/libs/utils";
-import gsap from "gsap";
 import Image from "next/image";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const DiceRoller = () => {
-  const { selectedNumber, setScore, setError, error }: any = useGameContext();
+  const { selectedNumber, isError, setIsError, setScore } = useGame();
 
   const [rolledNumber, setRolledNumber]: any = useState(1);
 
@@ -15,7 +14,7 @@ const DiceRoller = () => {
 
   const rollDice = () => {
     if (selectedNumber === 0) {
-      setError(true);
+      setIsError(true);
       return;
     }
 
@@ -35,31 +34,11 @@ const DiceRoller = () => {
     }, 1500);
   };
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const timeline = gsap.timeline();
-
-      timeline
-        .from("#diceImage", {
-          opacity: 0,
-          scale: 0,
-          duration: 1,
-          y: 200,
-          delay: 1,
-        })
-        .from("#hintText", {
-          opacity: 0,
-          y: 100,
-        });
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   useEffect(() => {
     const handleKeydown = (e: any) => {
       if (e.key === " ") {
-        error ? toast.error("Select a number") : !spin && rollDice();
+        isError ? toast.error("Select a number") : !spin && rollDice();
       }
     };
 
@@ -88,7 +67,7 @@ const DiceRoller = () => {
             width={250}
             height={250}
             onClick={() => {
-              error ? toast.error("Select a number") : !spin && rollDice();
+              isError ? toast.error("Select a number") : !spin && rollDice();
             }}
           />
         </div>

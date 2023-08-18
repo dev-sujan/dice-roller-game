@@ -1,5 +1,3 @@
-import React from "react";
-
 const GameRules = () => {
   return (
     <div className="bg-[#FBF1F1] inline-block p-5">

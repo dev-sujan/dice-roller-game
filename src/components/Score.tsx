@@ -1,31 +1,19 @@
 "use client";
-import useGameContext from "@/hooks/useGameContext";
-import React, { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
+import { useGame } from "@/hooks/useGame";
+import { useEffect, useState } from "react";
 
 const Score = () => {
-  const { score } = useGameContext();
+  const { score } = useGame();
+  const [isMounted, setIsMounted] = useState(false);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const timeline = gsap.timeline();
-
-      timeline
-        .from("#score", {
-          opacity: 0,
-          x: -200,
-          duration: 1,
-        })
-        .from("#total", {
-          opacity: 0,
-          y: 300,
-          duration: 0.5,
-        });
-    });
-
-    return () => ctx.revert();
+  useEffect(() => {
+    setIsMounted(true);
   }, []);
 
+
+  if (!isMounted) {
+    return null;
+  }
   return (
     <div className="inline-flex flex-col items-center">
       <div id={"score"} className=" text-5xl sm:text-8xl">

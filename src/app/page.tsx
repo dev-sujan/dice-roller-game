@@ -1,38 +1,24 @@
 "use client";
 import PlayGameButton from "@/components/PlayGameButton";
-import gsap from "gsap";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useLayoutEffect } from "react";
 
 const Home = () => {
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap
-        .timeline()
-        .from("#img", {
-          opacity: 0,
-          scale: 20,
-          duration: 1,
-        })
-        .from("#text", {
-          y: -500,
-          opacity: 0,
-          duration: 1,
-        })
-        .from("#playGameBtn", {
-          opacity: 1,
-          duration: 3,
-        });
-    });
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
-
   return (
-    <main className=" p-5 min-h-screen flex flex-col justify-center items-center sm:flex-row">
-      <aside className="flex-shrink">
+    <motion.main className=" p-5 min-h-[100dvh] flex flex-col justify-center items-center sm:flex-row overflow-hidden"
+      animate={{scale: 1}}
+      exit={{scale: 2}}
+    >
+      <motion.aside
+        className="flex-shrink"
+        initial={{ scale: 2, opacity: 0 }}
+        animate={{ rotate: 360 * 3, scale: 1, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 35,
+        }}
+      >
         <Image
           id="img"
           src={"/images/dices.png"}
@@ -41,19 +27,26 @@ const Home = () => {
           alt="dice-image"
           priority
         ></Image>
-      </aside>
+      </motion.aside>
       <div className="flex flex-col items-center sm:items-end text-center ">
-        <h1
+        <motion.h1
           id="text"
           className="font-bold uppercase text-[min(12vw,96px)]/[min(14vw,144px)] sm:text-6xl  md:text-7xl md:whitespace-nowrap"
+          initial={{ x: 500, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
         >
           Dice Game
-        </h1>
-        <>
+        </motion.h1>
+        <motion.div
+          initial={{ x: -500, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 1, duration: 0.5 }}
+        >
           <PlayGameButton id={"playGameBtn"} />
-        </>
+        </motion.div>
       </div>
-    </main>
+    </motion.main>
   );
 };
 

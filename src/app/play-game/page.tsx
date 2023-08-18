@@ -4,34 +4,30 @@ import DiceRoller from "@/components/DiceRoller";
 import GameRules from "@/components/GameRules";
 import Score from "@/components/Score";
 import SelectionBoxes from "@/components/selction-box";
-import useGameContext from "@/hooks/useGameContext";
-import gsap from "gsap";
-import { useLayoutEffect, useState } from "react";
+import { useGame } from "@/hooks/useGame";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 const PlayGame = () => {
   const [showRules, setShowRules] = useState(false);
-  const { resetScore }: any = useGameContext();
-
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from("#heading", {
-        opacity: 0,
-        y: 200,
-        duration: 0.7,
-      });
-    });
-
-    return () => ctx.revert();
-  }, []);
+  const { resetScore } = useGame();
 
   return (
-    <div className=" m-2 sm:mx-10 sm:my-8 overflow-x-hidden scroll-smooth">
-      <h1
+    <motion.div
+      className="m-2 sm:mx-10 sm:my-8 overflow-x-hidden scroll-smooth"
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      transition={{ delay: 0.3, type: "just" }}
+    >
+      <motion.h1
         id="heading"
         className="font-bold uppercase text-center whitespace-nowrap text-3xl sm:text-6xl  md:text-7xl md:whitespace-nowrap"
+        initial={{ y: 200, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
       >
         🎲Dice Roller🎲
-      </h1>
+      </motion.h1>
       <div className="flex flex-col sm:flex-row items-center justify-between pt-4">
         <Score />
         <SelectionBoxes />
@@ -52,7 +48,7 @@ const PlayGame = () => {
         </div>
         {showRules && <GameRules />}
       </main>
-    </div>
+    </motion.div>
   );
 };
 

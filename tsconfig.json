@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/conext/GameContext.jsx"
+    "src/context/GameContext.jsx"
   ],
   "exclude": ["node_modules"]
 }
