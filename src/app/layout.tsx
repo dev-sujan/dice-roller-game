@@ -12,7 +12,7 @@ const roboto = Roboto({
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dice Roller Game",
+  title: "RollMaster",
   description: "This is a simple dice roller Game",
 };
 
