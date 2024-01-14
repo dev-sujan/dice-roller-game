@@ -36,7 +36,7 @@ const Home = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
         >
-          Dice Game
+          Roll Master
         </motion.h1>
         <motion.div
           initial={{ x: -500, opacity: 0 }}
